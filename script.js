@@ -84,7 +84,7 @@ function startRebirth() {
     setCookies(cookies);
 
     rebirth++;
-    rebirthCost *= 1000;
+    rebirthCost *= 10000000;
     rebirthDisplay.innerText = `Rebirth ${rebirth}`;
     rebirthDisplay.hidden = false;
     rebirthButton.hidden = true;
