@@ -107,7 +107,7 @@ function setCookies(count) {
 
     for (var i = 0; i < count / cookieScale; i++) {
         var img = document.createElement("img");
-        if (count < 10000000000000000) img.className = `fakecookie-${cookieScale}`;
+        if (count < 1000000000000000000000000) img.className = `fakecookie-${cookieScale}`;
         else img.className = "fakecookie-infinity";
         img.src = "golden.png";
         cookiesDiv.appendChild(img);

@@ -172,6 +172,54 @@ html {
     filter: hue-rotate(240deg);
 }
 
+.fakecookie-100000000000000000 {
+    width: 170px;
+    height: 170px;
+    filter: hue-rotate(255deg);
+}
+
+.fakecookie-1000000000000000000 {
+    width: 180px;
+    height: 180px;
+    filter: hue-rotate(270deg);
+}
+
+.fakecookie-10000000000000000000 {
+    width: 190px;
+    height: 190px;
+    filter: hue-rotate(285deg);
+}
+
+.fakecookie-100000000000000000000 {
+    width: 200px;
+    height: 200px;
+    filter: hue-rotate(300deg);
+}
+
+.fakecookie-1000000000000000000000 {
+    width: 210px;
+    height: 210px;
+    filter: hue-rotate(315deg);
+}
+
+.fakecookie-10000000000000000000000 {
+    width: 220px;
+    height: 220px;
+    filter: hue-rotate(330deg);
+}
+
+.fakecookie-100000000000000000000000 {
+    width: 230px;
+    height: 230px;
+    filter: hue-rotate(345deg);
+}
+
+.fakecookie-1000000000000000000000000 {
+    width: 240px;
+    height: 240px;
+    filter: hue-rotate(350deg);
+}
+
 .fakecookie-infinity {
     width: 50px;
     height: 50px;
