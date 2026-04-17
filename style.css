@@ -1,3 +1,198 @@
 html {
     font-family: monospace;
 }
+
+.selector {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    draggable: false;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.upgrade {
+    background-color: indianred;
+    color: white;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.upgrade-ready {
+    background-color: palegreen;
+    color: black;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.counter {
+    animation-name: numberIncrease;
+}
+
+@keyframes numberIncrease {
+    0% {
+        rotate: 0deg;
+    }
+
+    33% {
+        rotate: -10deg;
+    }
+
+    66% {
+        rotate: 10deg;
+    }
+
+    100% {
+        rotate: 0deg;
+    }
+}
+
+.cookie {
+    width: 100px;
+    height: 100px;
+    transition: width 0.1s, height 0.1s, rotate 0.1s;
+}
+    .cookie:hover {
+        width: 110px;
+        height: 110px;
+        transition: width 0.1s, height 0.1s, rotate 0.1s;
+    }
+
+    .cookie:active {
+        width: 90px;
+        height: 90px;
+        rotate: -5deg;
+        transition: width 0.1s, height 0.1s, rotate 0.1s;
+    }
+
+.fakecookie-1 {
+    width: 10px;
+    height: 10px
+}
+
+.fakecookie-10 {
+    width: 20px;
+    height: 20px;
+    filter: hue-rotate(15deg);
+}
+
+.fakecookie-100 {
+    width: 30px;
+    height: 30px;
+    filter: hue-rotate(30deg);
+}
+
+.fakecookie-1000 {
+    width: 40px;
+    height: 40px;
+    filter: hue-rotate(45deg);
+}
+
+.fakecookie-10000 {
+    width: 50px;
+    height: 50px;
+    filter: hue-rotate(60deg);
+}
+
+.fakecookie-100000 {
+    width: 60px;
+    height: 60px;
+    filter: hue-rotate(75deg);
+}
+
+.fakecookie-1000000 {
+    width: 70px;
+    height: 70px;
+    filter: hue-rotate(90deg);
+}
+
+.fakecookie-10000000 {
+    width: 80px;
+    height: 80px;
+    filter: hue-rotate(105deg);
+}
+
+.fakecookie-100000000 {
+    width: 80px;
+    height: 80px;
+    filter: hue-rotate(120deg);
+}
+
+.fakecookie-1000000000 {
+    width: 90px;
+    height: 90px;
+    filter: hue-rotate(135deg);
+}
+
+.fakecookie-10000000000 {
+    width: 100px;
+    height: 100px;
+    filter: hue-rotate(150deg);
+}
+
+.fakecookie-100000000000 {
+    width: 110px;
+    height: 110px;
+    filter: hue-rotate(165deg);
+}
+
+.fakecookie-1000000000000 {
+    width: 120px;
+    height: 120px;
+    filter: hue-rotate(180deg);
+}
+
+.fakecookie-10000000000000 {
+    width: 130px;
+    height: 130px;
+    filter: hue-rotate(195deg);
+}
+
+.fakecookie-100000000000000 {
+    width: 140px;
+    height: 140px;
+    filter: hue-rotate(210deg);
+}
+
+.fakecookie-1000000000000000 {
+    width: 150px;
+    height: 150px;
+    filter: hue-rotate(225deg);
+}
+
+.fakecookie-10000000000000000 {
+    width: 160px;
+    height: 160px;
+    filter: hue-rotate(240deg);
+}
+
+.fakecookie-infinity {
+    width: 50px;
+    height: 50px;
+    filter: invert(100%);
+
+    animation-name: infinity;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes infinity {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
+}
+
+.vbox {
+    display: flex;
+    flex-direction: column;
+}
