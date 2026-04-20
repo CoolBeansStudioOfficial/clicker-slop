@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
 <html id="html">
+<head>
+    <title>Clicker Slop</title>
+</head>
 <body>
     <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
     <div class="vbox">
-        <div class="buttons">
+        <div class="buttons hbox">
             <p id="counter" class="counter">Cookies: 0</p>
             <p id="multiplier">Multiplier: 1x</p>
             <button id="upgrade" class="upgrade">Upgrade to 2x: 10 cookies</button>
@@ -13,6 +16,7 @@
             <button id="rebirth" class="upgrade-ready" hidden>Rebirth</button>
         </div>
         <img id="cookie" draggable="false" class="cookie selector" src="golden.png"></img>
+        <p>Click me!</p>
         <div id="cookies" class="cookies"></div>
     </div>
     <audio id="audio"></audio>

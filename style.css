@@ -3,6 +3,10 @@ html {
     background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 50%, rgba(200, 213, 218, 1) 100%);
 }
 
+button {
+    font-family: monospace;
+}
+
 .selector {
     user-drag: none;
     -webkit-user-drag: none;
@@ -14,8 +18,20 @@ html {
 }
 
 .buttons {
-    display: flex;
     gap: 10px;
+}
+
+.vbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hbox {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .upgrade {
@@ -52,6 +68,10 @@ html {
     100% {
         rotate: 0deg;
     }
+}
+
+.cookies {
+    max-width: 600px;
 }
 
 .cookie {
@@ -239,9 +259,4 @@ html {
     to {
         rotate: 360deg;
     }
-}
-
-.vbox {
-    display: flex;
-    flex-direction: column;
 }
