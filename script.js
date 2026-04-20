@@ -132,7 +132,7 @@ function setBackground(number) {
         html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
     else if (number == 4) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 500%, rgba(200, 213, 218, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
     else if (number == 5) {
         html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 50%, rgba(200, 213, 218, 1) 100%);"
