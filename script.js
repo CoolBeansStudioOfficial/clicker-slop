@@ -45,7 +45,7 @@ cookie.addEventListener("click", function () {
 upgradeButton.addEventListener("click", function () {
 
     if (cookies >= cost) {
-        playSound("audio/button.wav");
+        playSound("audio/upgrade.wav");
 
         cookies -= cost;
         updateCounter();
@@ -65,7 +65,13 @@ upgradeButton.addEventListener("click", function () {
 })
 
 rebirthButton.addEventListener("click", function() {
-    if (cookies >= rebirthCost) startRebirth();
+    if (cookies >= rebirthCost) {
+        playSound("audio/rebirth.wav");
+        startRebirth();
+    }
+    else {
+        playSound("audio/button.wav");
+    }
 });
 
 function checkUpgrade() {
