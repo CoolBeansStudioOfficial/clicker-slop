@@ -1,3 +1,4 @@
+let background = document.getElementById("background");
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
 let cookie = document.getElementById("cookie");
@@ -91,6 +92,29 @@ function startRebirth() {
 
     updateMultiplier();
     checkUpgrade();
+
+    setBackground(rebirth);
+}
+
+function setBackground(number) {
+    if (number == 1) {
+        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 100%);"
+    }
+    else if (number == 2) {
+        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(94, 171, 153, 1) 100%);"
+    }
+    else if (number == 3) {
+        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 100%);"
+    }
+    else if (number == 4) {
+        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 100%);"
+    }
+    else if (number == 5) {
+        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 100%);"
+    }
+    else {
+        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 100%);"
+    }
 }
 
 function setCookies(count) {
