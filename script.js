@@ -1,4 +1,5 @@
-let background = document.getElementById("background");
+let html = document.getElementById("html");
+let audio = document.getElementById("audio");
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
 let cookie = document.getElementById("cookie");
@@ -24,7 +25,14 @@ let animLength = {
     iterations: 1,
 }
 
-cookie.addEventListener("click", function() {
+function playSound(source) {
+    audio.src = source;
+    audio.play();
+}
+
+cookie.addEventListener("click", function () {
+    playSound("audio/button.wav");
+
     cookies += multiplier;
     updateCounter();
     setCookies(cookies);
@@ -34,19 +42,25 @@ cookie.addEventListener("click", function() {
     if (cookies >= rebirthCost) rebirthButton.hidden = false;
 });
 
-upgradeButton.addEventListener("click", function() {
+upgradeButton.addEventListener("click", function () {
+
     if (cookies >= cost) {
+        playSound("audio/button.wav");
+
         cookies -= cost;
         updateCounter();
         setCookies(cookies);
 
         multiplier *= 2 + (rebirth - 1);
-        
+
         multiplierDisplay.animate(numberAnim, animLength);
         costMultiplier += 0.2;
         cost = Math.round(cost * costMultiplier);
         updateMultiplier();
         checkUpgrade();
+    }
+    else {
+        playSound("audio/button.wav");
     }
 })
 
@@ -98,22 +112,22 @@ function startRebirth() {
 
 function setBackground(number) {
     if (number == 1) {
-        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
     else if (number == 2) {
-        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(94, 171, 153, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(94, 171, 153, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
     else if (number == 3) {
-        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
     else if (number == 4) {
-        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 500%, rgba(200, 213, 218, 1) 100%);"
     }
     else if (number == 5) {
-        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
     else {
-        background.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 100%);"
+        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 50%, rgba(200, 213, 218, 1) 100%);"
     }
 }
 
