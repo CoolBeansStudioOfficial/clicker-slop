@@ -39,7 +39,12 @@ cookie.addEventListener("click", function () {
     checkUpgrade();
     counter.animate(numberAnim, animLength);
 
-    if (cookies >= rebirthCost) rebirthButton.hidden = false;
+    if (cookies >= rebirthCost) {
+        rebirthButton.hidden = false;
+    }
+    else {
+        rebirthButton.hidden = true;
+    }
 });
 
 upgradeButton.addEventListener("click", function () {
