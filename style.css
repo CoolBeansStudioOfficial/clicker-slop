@@ -17,7 +17,7 @@ button {
     draggable: false;
 }
 
-.buttons {
+.spaced {
     gap: 10px;
 }
 
@@ -39,6 +39,7 @@ button {
     color: white;
     border-radius: 10px;
     border-color: transparent;
+    filter: drop-shadow(0px 0px 4px #0000004D);
 }
 
 .button-ready {
@@ -46,7 +47,30 @@ button {
     color: black;
     border-radius: 10px;
     border-color: transparent;
+    filter: drop-shadow(0px 0px 4px #0000004D);
+    scale: 1;
+    transition: scale 0.1s;
 }
+
+    .button-ready:hover {
+        background-color: palegreen;
+        color: black;
+        border-radius: 10px;
+        border-color: transparent;
+        filter: drop-shadow(0px 0px 4px #0000004D);
+        scale: 1.05;
+        transition: scale 0.1s;
+    }
+
+    .button-ready:active {
+        background-color: palegreen;
+        color: black;
+        border-radius: 10px;
+        border-color: transparent;
+        filter: drop-shadow(0px 0px 4px #0000004D);
+        scale: 0.95;
+        transition: scale 0.1s;
+    }
 
 .counter {
     animation-name: numberIncrease;

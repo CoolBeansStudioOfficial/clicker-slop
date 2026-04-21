@@ -26,8 +26,10 @@ let multiplier = 1;
 let cost = 10;
 let costMultiplier = 1;
 
-cookieButton.addEventListener("click", function () {
-    playSound("audio/button.wav");
+cookieButton.addEventListener("click", clickCookie);
+
+export function clickCookie(sound = true) {
+    if (sound) playSound("audio/button.wav");
 
     cookies += multiplier;
     updateCounter();
@@ -41,7 +43,7 @@ cookieButton.addEventListener("click", function () {
     else {
         rebirthButton.hidden = true;
     }
-});
+}
 
 upgradeButton.addEventListener("click", function () {
 
@@ -55,7 +57,7 @@ upgradeButton.addEventListener("click", function () {
         multiplier *= 2 + (rebirth - 1);
 
         multiplierDisplay.animate(numberAnim, animLength);
-        costMultiplier += 0.2;
+        costMultiplier += 0.8;
         cost = Math.round(cost * costMultiplier);
         updateMultiplier();
         checkUpgrade();
@@ -85,12 +87,12 @@ function checkUpgrade() {
 }
 
 function updateCounter() {
-    counter.innerText = `Cookies: ${cookies}`;
+    counter.innerText = `Cookies: ${numberToWord(cookies)}`;
 }
 
 function updateMultiplier() {
-    multiplierDisplay.innerText = `Multiplier: ${multiplier}x`;
-    upgradeButton.innerText = `Upgrade to ${multiplier * (2 + (rebirth - 1))}x: ${cost} cookies`;
+    multiplierDisplay.innerText = `Multiplier: ${numberToWord(multiplier)}`;
+    upgradeButton.innerText = `Upgrade multiplier to ${numberToWord(multiplier * (2 + (rebirth - 1)))}:\n${numberToWord(cost)} cookies`;
 }
 
 let rebirth = 1;
@@ -171,18 +173,57 @@ function numberToWord(number) {
     var divisions = 0;
 
     while (number > 10) {
-        number /= 100;
-        divisions++;
+        if (number / 1000 > 1) {
+            number /= 1000;
+            divisions++;
+        }
+        else break;
     }
 
-    var word = "";
+    var word = number.toFixed(2).toString();
 
     while (divisions > 0) {
         if (divisions == 1) {
-
+            word += " thousand"
+            divisions -= 1;
         }
         else if (divisions == 2) {
-
+            word += " million"
+            divisions -= 2;
+        }
+        else if (divisions == 3) {
+            word += " billion"
+            divisions -= 3;
+        }
+        else if (divisions == 4) {
+            word += " trillion"
+            divisions -= 4;
+        }
+        else if (divisions == 5) {
+            word += " quadrillion"
+            divisions -= 5;
+        }
+        else if (divisions == 6) {
+            word += " quintillion"
+            divisions -= 6;
+        }
+        else if (divisions == 7) {
+            word += " sextillion"
+            divisions -= 7;
+        }
+        else if (divisions == 8) {
+            word += " septillion"
+            divisions -= 8;
+        }
+        else if (divisions == 9) {
+            word += " octillion"
+            divisions -= 9;
+        }
+        else if (divisions >= 10) {
+            word += " decillion"
+            divisions -= 10;
         }
     }
+
+    return word;
 }
