@@ -71,23 +71,25 @@ button {
 }
 
 .cookies {
+    position: absolute;
+    top: 300px;
     max-width: 600px;
 }
 
 .cookie {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     transition: width 0.1s, height 0.1s, rotate 0.1s;
 }
     .cookie:hover {
-        width: 110px;
-        height: 110px;
+        width: 198px;
+        height: 198px;
         transition: width 0.1s, height 0.1s, rotate 0.1s;
     }
 
     .cookie:active {
-        width: 90px;
-        height: 90px;
+        width: 180px;
+        height: 180px;
         rotate: -5deg;
         transition: width 0.1s, height 0.1s, rotate 0.1s;
     }

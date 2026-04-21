@@ -1,5 +1,7 @@
-let html = document.getElementById("html");
+import { playSound } from "./audio.js";
+
 let audio = document.getElementById("audio");
+let html = document.getElementById("html");
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
 let cookie = document.getElementById("cookie");
@@ -23,11 +25,6 @@ let numberAnim = [
 let animLength = {
     duration: 100,
     iterations: 1,
-}
-
-function playSound(source) {
-    audio.src = source;
-    audio.play();
 }
 
 cookie.addEventListener("click", function () {
@@ -167,4 +164,15 @@ function clearCookies() {
     while (cookiesDiv.childElementCount > 0) {
         cookiesDiv.removeChild(cookiesDiv.firstChild);
     }
+}
+
+function numberToWord(number) {
+    var divisions = 0;
+
+    while (number > 10) {
+        number /= 10;
+        divisions++;
+    }
+
+
 }
