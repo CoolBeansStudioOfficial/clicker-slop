@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="style.css" />
     <script src="js/audio.js" type="module"></script>
     <script defer src="js/script.js" type="module"></script>
-    <
     <div class="vbox">
         <div class="buttons hbox">
             <p id="counter" class="counter">Cookies: 0</p>
             <p id="multiplier">Multiplier: 1x</p>
-            <button id="upgrade" class="upgrade">Upgrade to 2x: 10 cookies</button>
+            <button id="upgrade" class="button">Upgrade to 2x: 10 cookies</button>
 
             <p id="rebirthDisplay" class="rebirthDisplay" hidden>Rebirth 1</p>
-            <button id="rebirth" class="upgrade-ready" hidden>Rebirth</button>
+            <button id="rebirth" class="button-ready" hidden>Rebirth</button>
         </div>
-        <img id="cookie" draggable="false" class="cookie selector" src="golden.png"></img>
+        <div class="shop hbox">
+            <button class="button">Auto-clicker: infinity cookies</button>
+        </div>
+        <button id="cookie" draggable="false" class="cookie selector"></button>
         <p>Click me!</p>
         <div id="cookies" class="cookies"></div>
     </div>

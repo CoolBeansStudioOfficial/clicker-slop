@@ -1,25 +1,19 @@
 import { playSound } from "./audio.js";
 
-let audio = document.getElementById("audio");
 let html = document.getElementById("html");
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
-let cookie = document.getElementById("cookie");
+let cookieButton = document.getElementById("cookie");
 let cookiesDiv = document.getElementById("cookies");
 let upgradeButton = document.getElementById("upgrade");
 let rebirthDisplay = document.getElementById("rebirthDisplay");
 let rebirthButton = document.getElementById("rebirth");
 
-let cookies = 0;
-let multiplier = 1;
-let cost = 10;
-let costMultiplier = 1;
-
 let numberAnim = [
-    { rotate: "0deg" },
-    { rotate: "-10deg" },
-    { rotate: "10deg" },
-    { rotate: "0deg" },
+        { rotate: "0deg" },
+        { rotate: "-10deg" },
+        { rotate: "10deg" },
+        { rotate: "0deg" },
 ]
 
 let animLength = {
@@ -27,7 +21,12 @@ let animLength = {
     iterations: 1,
 }
 
-cookie.addEventListener("click", function () {
+let cookies = 0;
+let multiplier = 1;
+let cost = 10;
+let costMultiplier = 1;
+
+cookieButton.addEventListener("click", function () {
     playSound("audio/button.wav");
 
     cookies += multiplier;
@@ -78,10 +77,10 @@ rebirthButton.addEventListener("click", function() {
 
 function checkUpgrade() {
     if (cookies >= cost) {
-        upgradeButton.className = "upgrade-ready"
+        upgradeButton.className = "button-ready"
     }
     else {
-        upgradeButton.className = "upgrade"
+        upgradeButton.className = "button"
     }
 }
 
@@ -155,7 +154,7 @@ function setCookies(count) {
         var img = document.createElement("img");
         if (count < 1000000000000000000000000) img.className = `fakecookie-${cookieScale}`;
         else img.className = "fakecookie-infinity";
-        img.src = "golden.png";
+        img.src = "cookie.png";
         cookiesDiv.appendChild(img);
     }
 }
@@ -167,12 +166,23 @@ function clearCookies() {
 }
 
 function numberToWord(number) {
+    if (number < 1000) return number;
+
     var divisions = 0;
 
     while (number > 10) {
-        number /= 10;
+        number /= 100;
         divisions++;
     }
 
+    var word = "";
 
+    while (divisions > 0) {
+        if (divisions == 1) {
+
+        }
+        else if (divisions == 2) {
+
+        }
+    }
 }

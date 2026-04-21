@@ -34,14 +34,14 @@ button {
     align-items: center;
 }
 
-.upgrade {
+.button {
     background-color: indianred;
     color: white;
     border-radius: 10px;
     border-color: transparent;
 }
 
-.upgrade-ready {
+.button-ready {
     background-color: palegreen;
     color: black;
     border-radius: 10px;
@@ -71,38 +71,40 @@ button {
 }
 
 .cookies {
-    position: absolute;
-    top: 300px;
+    
     max-width: 600px;
 }
 
 .cookie {
+    background-image: url("cookie.png");
+    background-size: cover;
+    border: 0px;
+    background-color: transparent;
     width: 200px;
     height: 200px;
-    transition: width 0.1s, height 0.1s, rotate 0.1s;
+    scale: 1;
+    transition: scale 0.1s, rotate 0.1s;
 }
     .cookie:hover {
-        width: 198px;
-        height: 198px;
-        transition: width 0.1s, height 0.1s, rotate 0.1s;
+        background-image: url("cookie.png");
+        width: 200px;
+        height: 200px;
+        scale: 1.05;
+        transition: scale 0.1s, rotate 0.1s;
     }
 
     .cookie:active {
-        width: 180px;
-        height: 180px;
+        background-image: url("cookie.png");
+        width: 200px;
+        height: 200px;
+        scale: 0.8;
         rotate: -5deg;
-        transition: width 0.1s, height 0.1s, rotate 0.1s;
+        transition: scale 0.1s, rotate 0.1s;
     }
 
 .fakecookie-1 {
     width: 10px;
     height: 10px
-}
-
-.fakecookie-10 {
-    width: 20px;
-    height: 20px;
-    filter: hue-rotate(15deg);
 }
 
 .fakecookie-100 {
@@ -111,22 +113,10 @@ button {
     filter: hue-rotate(30deg);
 }
 
-.fakecookie-1000 {
-    width: 40px;
-    height: 40px;
-    filter: hue-rotate(45deg);
-}
-
 .fakecookie-10000 {
     width: 50px;
     height: 50px;
     filter: hue-rotate(60deg);
-}
-
-.fakecookie-100000 {
-    width: 60px;
-    height: 60px;
-    filter: hue-rotate(75deg);
 }
 
 .fakecookie-1000000 {
@@ -135,28 +125,10 @@ button {
     filter: hue-rotate(90deg);
 }
 
-.fakecookie-10000000 {
-    width: 80px;
-    height: 80px;
-    filter: hue-rotate(105deg);
-}
-
-.fakecookie-100000000 {
-    width: 80px;
-    height: 80px;
-    filter: hue-rotate(120deg);
-}
-
 .fakecookie-1000000000 {
     width: 90px;
     height: 90px;
     filter: hue-rotate(135deg);
-}
-
-.fakecookie-10000000000 {
-    width: 100px;
-    height: 100px;
-    filter: hue-rotate(150deg);
 }
 
 .fakecookie-100000000000 {
@@ -165,22 +137,10 @@ button {
     filter: hue-rotate(165deg);
 }
 
-.fakecookie-1000000000000 {
-    width: 120px;
-    height: 120px;
-    filter: hue-rotate(180deg);
-}
-
 .fakecookie-10000000000000 {
     width: 130px;
     height: 130px;
     filter: hue-rotate(195deg);
-}
-
-.fakecookie-100000000000000 {
-    width: 140px;
-    height: 140px;
-    filter: hue-rotate(210deg);
 }
 
 .fakecookie-1000000000000000 {
@@ -189,22 +149,10 @@ button {
     filter: hue-rotate(225deg);
 }
 
-.fakecookie-10000000000000000 {
-    width: 160px;
-    height: 160px;
-    filter: hue-rotate(240deg);
-}
-
 .fakecookie-100000000000000000 {
     width: 170px;
     height: 170px;
     filter: hue-rotate(255deg);
-}
-
-.fakecookie-1000000000000000000 {
-    width: 180px;
-    height: 180px;
-    filter: hue-rotate(270deg);
 }
 
 .fakecookie-10000000000000000000 {
@@ -213,34 +161,16 @@ button {
     filter: hue-rotate(285deg);
 }
 
-.fakecookie-100000000000000000000 {
-    width: 200px;
-    height: 200px;
-    filter: hue-rotate(300deg);
-}
-
 .fakecookie-1000000000000000000000 {
     width: 210px;
     height: 210px;
     filter: hue-rotate(315deg);
 }
 
-.fakecookie-10000000000000000000000 {
-    width: 220px;
-    height: 220px;
-    filter: hue-rotate(330deg);
-}
-
 .fakecookie-100000000000000000000000 {
     width: 230px;
     height: 230px;
     filter: hue-rotate(345deg);
-}
-
-.fakecookie-1000000000000000000000000 {
-    width: 240px;
-    height: 240px;
-    filter: hue-rotate(350deg);
 }
 
 .fakecookie-infinity {
