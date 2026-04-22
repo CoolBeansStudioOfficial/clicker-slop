@@ -1,5 +1,5 @@
 import { numberToWord, cookies, multiplier, multCost, rebirth, rebirthCost } from "./game.js";
-import { autoclickCost } from "./powerups.js";
+import { autoclickCost, crumbsCost } from "./powerups.js";
 
 let html = document.getElementById("html");
 let counter = document.getElementById("counter");
@@ -7,6 +7,7 @@ let multiplierDisplay = document.getElementById("multiplier");
 let cookiesDiv = document.getElementById("cookies");
 let upgradeButton = document.getElementById("upgrade");
 let autoclickButton = document.getElementById("autoclick");
+let crumbsButton = document.getElementById("crumbs");
 
 //ui updates
 
@@ -26,6 +27,9 @@ export function updateUI() {
 
     if (cookies >= autoclickCost) setButtonState(autoclickButton, true);
     else setButtonState(autoclickButton);
+
+    if (cookies >= crumbsCost) setButtonState(crumbsButton, true);
+    else setButtonState(crumbsButton);
 }
 
 let rebirthDisplay = document.getElementById("rebirthDisplay");
@@ -83,6 +87,7 @@ export function setCookies(count) {
         if (count < 1000000000000000000000000) img.className = `fakecookie-${cookieScale} fakecookie`;
         else img.className = "fakecookie-infinity fakecookie";
         img.src = "cookie.png";
+        img.title = `${cookieScale} cookies`;
         cookiesDiv.appendChild(img);
     }
 }

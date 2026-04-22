@@ -11,6 +11,7 @@ function preloadSounds() {
     preloadSound("audio/rebirth.wav");
     preloadSound("audio/upgrade.wav");
     preloadSound("audio/powerup.wav");
+    preloadSound("audio/crumb.wav");
 }
 
 async function preloadSound(url) {
