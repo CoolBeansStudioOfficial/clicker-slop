@@ -37,8 +37,9 @@ export function clickCookie(sound = true) {
     updateUI();
 }
 
-export function spendCookies(number) {
+export function spendCookies(number, animate = false) {
     cookies -= number;
+    if (animate) counter.animate(numberAnim, animLength);
 }
 
 upgradeButton.addEventListener("click", function () {
