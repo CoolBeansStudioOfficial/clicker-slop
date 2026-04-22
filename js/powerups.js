@@ -1,13 +1,19 @@
-import { clickCookie } from "./game.js";
+import { clickCookie, numberToWord, cookies, spendCookies } from "./game.js";
 
 let autoclickButton = document.getElementById("autoclick")
-
-let autoclickOn = true;
+let autoclickCost = 1000;
+let autoclickOn = false;
 let clickSpeed = 1;
 
 //button functions
-autoclickButton.addEventListener("click", function() {
 
+autoclickButton.addEventListener("click", function() {
+    if (cookies >= autoclickCost) { 
+        spendCookies(autoclickCost);
+        autoclickOn = true;
+        autoclickCost ^= 2;
+        autoclickButton.innerText = `Upgrade auto-clicker:\n${numberToWord(autoclickCost)}`;
+    }
 });
 
 //powerup functions

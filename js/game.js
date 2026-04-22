@@ -1,6 +1,6 @@
 import { playSound } from "./audio.js";
+import { updateRebirth, updateUI } from "./ui.js";
 
-let html = document.getElementById("html");
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
 let cookieButton = document.getElementById("cookie");
@@ -21,9 +21,9 @@ let animLength = {
     iterations: 1,
 }
 
-let cookies = 0;
-let multiplier = 1;
-let cost = 10;
+export let cookies = 0;
+export let multiplier = 1;
+export let multCost = 10;
 let costMultiplier = 1;
 
 cookieButton.addEventListener("click", clickCookie);
@@ -32,35 +32,29 @@ export function clickCookie(sound = true) {
     if (sound) playSound("audio/button.wav");
 
     cookies += multiplier;
-    updateCounter();
-    setCookies(cookies);
-    checkUpgrade();
     counter.animate(numberAnim, animLength);
 
-    if (cookies >= rebirthCost) {
-        rebirthButton.hidden = false;
-    }
-    else {
-        rebirthButton.hidden = true;
-    }
+    updateUI();
+}
+
+export function spendCookies(number) {
+    cookies -= number;
 }
 
 upgradeButton.addEventListener("click", function () {
 
-    if (cookies >= cost) {
+    if (cookies >= multCost) {
         playSound("audio/upgrade.wav");
 
-        cookies -= cost;
-        updateCounter();
-        setCookies(cookies);
+        cookies -= multCost;
 
         multiplier *= 2 + (rebirth - 1);
 
         multiplierDisplay.animate(numberAnim, animLength);
         costMultiplier += 0.8;
-        cost = Math.round(cost * costMultiplier);
-        updateMultiplier();
-        checkUpgrade();
+        multCost = Math.round(multCost * costMultiplier);
+        
+        updateUI();
     }
     else {
         playSound("audio/button.wav");
@@ -77,35 +71,15 @@ rebirthButton.addEventListener("click", function() {
     }
 });
 
-function checkUpgrade() {
-    if (cookies >= cost) {
-        upgradeButton.className = "button-ready"
-    }
-    else {
-        upgradeButton.className = "button"
-    }
-}
-
-function updateCounter() {
-    counter.innerText = `Cookies: ${numberToWord(cookies)}`;
-}
-
-function updateMultiplier() {
-    multiplierDisplay.innerText = `Multiplier: ${numberToWord(multiplier)}`;
-    upgradeButton.innerText = `Upgrade multiplier to ${numberToWord(multiplier * (2 + (rebirth - 1)))}:\n${numberToWord(cost)} cookies`;
-}
-
-let rebirth = 1;
-let rebirthCost = 1000000;
+export let rebirth = 1;
+export let rebirthCost = 1000000;
 
 function startRebirth() {
     //reset stats
     cookies = 0;
     multiplier = 1;
-    cost = 10;
+    multCost = 10;
     costMultiplier = 1;
-    updateCounter();
-    setCookies(cookies);
 
     rebirth++;
     rebirthCost *= 10000000;
@@ -113,61 +87,10 @@ function startRebirth() {
     rebirthDisplay.hidden = false;
     rebirthButton.hidden = true;
 
-    updateMultiplier();
-    checkUpgrade();
-
-    setBackground(rebirth);
+    updateRebirth();
 }
 
-function setBackground(number) {
-    if (number == 1) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 2) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(94, 171, 153, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 3) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 4) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 5) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-}
-
-function setCookies(count) {
-    clearCookies();
-    var cookieScale = 1;
-
-    var lengthFound = false;
-    while (!lengthFound) {
-        if (count - (cookieScale * 100) < 1) {
-            lengthFound = true;
-        }
-        else { cookieScale *= 100 }
-    }
-
-    for (var i = 0; i < count / cookieScale; i++) {
-        var img = document.createElement("img");
-        if (count < 1000000000000000000000000) img.className = `fakecookie-${cookieScale}`;
-        else img.className = "fakecookie-infinity";
-        img.src = "cookie.png";
-        cookiesDiv.appendChild(img);
-    }
-}
-
-function clearCookies() {
-    while (cookiesDiv.childElementCount > 0) {
-        cookiesDiv.removeChild(cookiesDiv.firstChild);
-    }
-}
-
-function numberToWord(number) {
+export function numberToWord(number) {
     if (number < 1000) return number;
 
     var divisions = 0;
