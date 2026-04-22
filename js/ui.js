@@ -1,10 +1,12 @@
 import { numberToWord, cookies, multiplier, multCost, rebirth, rebirthCost } from "./game.js";
+import { autoclickCost } from "./powerups.js";
 
 let html = document.getElementById("html");
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
 let cookiesDiv = document.getElementById("cookies");
 let upgradeButton = document.getElementById("upgrade");
+let autoclickButton = document.getElementById("autoclick");
 
 //ui updates
 
@@ -15,12 +17,15 @@ export function updateUI() {
 
     setCookies(cookies);
 
-    if (cookies >= multCost) upgradeButton.className = "button-ready";
-    else upgradeButton.className = "button";
+    if (cookies >= multCost) setButtonState(upgradeButton, true);
+    else setButtonState(upgradeButton);
     upgradeButton.innerText = `Upgrade multiplier to ${numberToWord(multiplier * (2 + (rebirth - 1)))}:\n${numberToWord(multCost)} cookies`;
 
     if (cookies >= rebirthCost) rebirthButton.hidden = false;
     else rebirthButton.hidden = true;
+
+    if (cookies >= autoclickCost) setButtonState(autoclickButton, true);
+    else setButtonState(autoclickButton);
 }
 
 let rebirthDisplay = document.getElementById("rebirthDisplay");
@@ -32,7 +37,12 @@ export function updateRebirth() {
     rebirthButton.hidden = true;
     setBackground(rebirth);
 
-    updateCounts();
+    updateUI();
+}
+
+export function setButtonState(button, active = false) {
+    if (active) button.className = "button-ready";
+    else button.className = "button";
 }
 
 function setBackground(number) {

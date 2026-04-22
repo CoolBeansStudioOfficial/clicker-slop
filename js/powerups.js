@@ -1,27 +1,33 @@
+import { playSound } from "./audio.js";
 import { clickCookie, numberToWord, cookies, spendCookies } from "./game.js";
 
-let autoclickButton = document.getElementById("autoclick")
-let autoclickCost = 1000;
+let autoclickButton = document.getElementById("autoclick");
+export let autoclickCost = 1001;
 let autoclickOn = false;
-let clickSpeed = 1;
+let clickDelay = 1000;
 
 //button functions
 
 autoclickButton.addEventListener("click", function() {
     if (cookies >= autoclickCost) { 
+        playSound("audio/powerup.wav");
         spendCookies(autoclickCost);
-        autoclickOn = true;
-        autoclickCost ^= 2;
-        autoclickButton.innerText = `Upgrade auto-clicker:\n${numberToWord(autoclickCost)}`;
+
+        if (!autoclickOn) autoclickOn = true;
+        else {
+            clickDelay /= 2;
+            autoclickCost *= 10;
+        }
+        
+        autoclickButton.innerText = `Upgrade autoclick:\n${numberToWord(autoclickCost)}`;
     }
 });
 
 //powerup functions
 
-setTimeout(autoClick, clickSpeed * 1000);
+setTimeout(autoClick, clickDelay);
 
 function autoClick() {
-    if (!autoclickOn) return;
-    clickCookie(false);
-    setTimeout(autoClick, clickSpeed * 1000);
+    if (autoclickOn) clickCookie(false);
+    setTimeout(autoClick, clickDelay);
 }

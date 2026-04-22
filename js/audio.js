@@ -7,9 +7,10 @@ const activeFetches = new Map()
 preloadSounds();
 
 function preloadSounds() {
-    preloadSound("audio/button.wav")
-    preloadSound("audio/rebirth.wav")
-    preloadSound("audio/upgrade.wav")
+    preloadSound("audio/button.wav");
+    preloadSound("audio/rebirth.wav");
+    preloadSound("audio/upgrade.wav");
+    preloadSound("audio/powerup.wav");
 }
 
 async function preloadSound(url) {

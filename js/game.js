@@ -51,7 +51,7 @@ upgradeButton.addEventListener("click", function () {
         multiplier *= 2 + (rebirth - 1);
 
         multiplierDisplay.animate(numberAnim, animLength);
-        costMultiplier += 0.8;
+        costMultiplier += 0.65;
         multCost = Math.round(multCost * costMultiplier);
         
         updateUI();
@@ -109,40 +109,31 @@ export function numberToWord(number) {
         if (divisions == 1) {
             word += " thousand"
             divisions -= 1;
-        }
-        else if (divisions == 2) {
+        } else if (divisions == 2) {
             word += " million"
             divisions -= 2;
-        }
-        else if (divisions == 3) {
+        } else if (divisions == 3) {
             word += " billion"
             divisions -= 3;
-        }
-        else if (divisions == 4) {
+        } else if (divisions == 4) {
             word += " trillion"
             divisions -= 4;
-        }
-        else if (divisions == 5) {
+        } else if (divisions == 5) {
             word += " quadrillion"
             divisions -= 5;
-        }
-        else if (divisions == 6) {
+        } else if (divisions == 6) {
             word += " quintillion"
             divisions -= 6;
-        }
-        else if (divisions == 7) {
+        } else if (divisions == 7) {
             word += " sextillion"
             divisions -= 7;
-        }
-        else if (divisions == 8) {
+        } else if (divisions == 8) {
             word += " septillion"
             divisions -= 8;
-        }
-        else if (divisions == 9) {
+        } else if (divisions == 9) {
             word += " octillion"
             divisions -= 9;
-        }
-        else if (divisions >= 10) {
+        } else if (divisions >= 10) {
             word += " decillion"
             divisions -= 10;
         }
