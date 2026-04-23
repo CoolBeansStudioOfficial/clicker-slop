@@ -14,13 +14,13 @@ let crumbsButton = document.getElementById("crumbs");
 export function updateUI() {
     counter.innerText = `Cookies: ${numberToWord(cookies)}`;
 
-    multiplierDisplay.innerText = `Multiplier: ${numberToWord(multiplier)}`;
+    multiplierDisplay.innerText = `Cookies per click (CPC): ${numberToWord(multiplier)}`;
 
     setCookies(cookies);
 
     if (cookies >= multCost) setButtonState(upgradeButton, true);
     else setButtonState(upgradeButton);
-    upgradeButton.innerText = `Upgrade multiplier to ${numberToWord(multiplier * (2 + (rebirth - 1)))}:\n${numberToWord(multCost)} cookies`;
+    upgradeButton.innerText = `Upgrade CPC to ${numberToWord(multiplier * (2 + (rebirth - 1)))}:\n${numberToWord(multCost)} cookies`;
 
     if (cookies >= rebirthCost) rebirthButton.hidden = false;
     else rebirthButton.hidden = true;

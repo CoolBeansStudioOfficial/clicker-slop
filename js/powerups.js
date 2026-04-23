@@ -7,20 +7,19 @@ import { updateUI } from "./ui.js";
 //autoclick
 
 let autoclickButton = document.getElementById("autoclick");
-export let autoclickCost = 1001;
+export let autoclickCost = 500;
 let autoclickOn = false;
-let clickDelay = 1000;
+let clickDelay = 500;
 
 autoclickButton.addEventListener("click", function() {
     if (cookies >= autoclickCost) { 
         playSound("audio/powerup.wav");
         spendCookies(autoclickCost);
 
-        if (!autoclickOn) autoclickOn = true;
-        else {
-            clickDelay /= 2;
-            autoclickCost *= 10;
-        }
+        if (!autoclickOn) autoclickOn = true; 
+        else clickDelay /= 2;
+
+        autoclickCost *= 10;
         
         autoclickButton.innerText = `Upgrade autoclick:\n${numberToWord(autoclickCost)}`;
 
@@ -41,7 +40,7 @@ let crumbsButton = document.getElementById("crumbs");
 let crumb = document.getElementById("crumb");
 export let crumbsCost = 5001;
 let crumbsOn = false;
-let crumbsDelay = 10000;
+let crumbsDelay = 5000;
 
 crumbsButton.addEventListener("click", function() {
     if (cookies >= crumbsCost) { 
@@ -52,10 +51,9 @@ crumbsButton.addEventListener("click", function() {
             crumbsOn = true;
             spawnCrumb();
         }
-        else {
-            crumbsDelay /= 2;
-            crumbsCost *= 10;
-        }
+        else crumbsDelay /= 2;
+            
+        crumbsCost *= 1000;
         
         crumbsButton.innerText = `Upgrade crumbs:\n${numberToWord(crumbsCost)}`;
 
@@ -63,14 +61,25 @@ crumbsButton.addEventListener("click", function() {
     }
 });
 
+let position = "left";
+
 function spawnCrumb() {
-    crumb.style = `top: ${Math.random() * 100}px; left: ${Math.random() * 100}px;`
+    if (position == "left") position = "right";
+    else position = "left";
+    crumb.style = `top: ${Math.random() * 250}px; ${position}: ${clamp(Math.random() * 500, 250, 500)}px;`
     crumb.hidden = false;
-    crumb.innerHTML = `${multiplier * 100} cookies`
+    crumb.innerHTML = `${numberToWord(multiplier * 1000)} cookies`
 }
 
 crumb.addEventListener("click", function () {
-    spendCookies(-multiplier * 100, true);
+    playSound("audio/crumb.wav");
+    spendCookies(-multiplier * 1000, true);
     setTimeout(spawnCrumb, crumbsDelay);
     crumb.hidden = true;
-})
+
+    updateUI();
+});
+
+function clamp(number, minimum, maximum) {
+	return Math.min(Math.max(number, minimum), maximum);
+}

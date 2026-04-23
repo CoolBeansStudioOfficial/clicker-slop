@@ -52,7 +52,7 @@ upgradeButton.addEventListener("click", function () {
         multiplier *= 2 + (rebirth - 1);
 
         multiplierDisplay.animate(numberAnim, animLength);
-        costMultiplier += 0.65;
+        costMultiplier += 0.5;
         multCost = Math.round(multCost * costMultiplier);
         
         updateUI();
@@ -73,7 +73,7 @@ rebirthButton.addEventListener("click", function() {
 });
 
 export let rebirth = 1;
-export let rebirthCost = 1000000;
+export let rebirthCost = 100000000000000000000000000000000;
 
 function startRebirth() {
     //reset stats
