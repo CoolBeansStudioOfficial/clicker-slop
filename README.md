@@ -1,4 +1,4 @@
-# Clicker Slop
+# Cookie Tycoon
 
 ## How To Play
 
