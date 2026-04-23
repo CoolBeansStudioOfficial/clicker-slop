@@ -16,7 +16,10 @@ autoclickButton.addEventListener("click", function() {
         playSound("audio/powerup.wav");
         spendCookies(autoclickCost);
 
-        if (!autoclickOn) autoclickOn = true; 
+        if (!autoclickOn) {
+            autoclickOn = true;
+            setTimeout(autoClick, clickDelay);
+        }
         else clickDelay /= 2;
 
         autoclickCost *= 10;
@@ -26,8 +29,6 @@ autoclickButton.addEventListener("click", function() {
         updateUI();
     }
 });
-
-setTimeout(autoClick, clickDelay);
 
 function autoClick() {
     if (autoclickOn) clickCookie(false);

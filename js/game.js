@@ -52,7 +52,7 @@ upgradeButton.addEventListener("click", function () {
         multiplier *= 2 + (rebirth - 1);
 
         multiplierDisplay.animate(numberAnim, animLength);
-        costMultiplier += 0.5;
+        costMultiplier += 0.35;
         multCost = Math.round(multCost * costMultiplier);
         
         updateUI();
@@ -73,7 +73,7 @@ rebirthButton.addEventListener("click", function() {
 });
 
 export let rebirth = 1;
-export let rebirthCost = 100000000000000000000000000000000;
+export let rebirthCost = 10000000;
 
 function startRebirth() {
     //reset stats
@@ -91,8 +91,8 @@ function startRebirth() {
     updateRebirth();
 }
 
-export function numberToWord(number) {
-    if (number < 1000) return number;
+export function numberToWord(number, wordOnly = false) {
+    if (number < 1000 && !wordOnly) return number;
 
     var divisions = 0;
 
@@ -104,39 +104,54 @@ export function numberToWord(number) {
         else break;
     }
 
-    var word = number.toFixed(2).toString();
+    var word = "";
+    if (!wordOnly) var word = number.toFixed(2).toString();
 
     while (divisions > 0) {
         if (divisions == 1) {
-            word += " thousand"
+            if (!wordOnly) word += " ";
+            word += "thousand"
             divisions -= 1;
         } else if (divisions == 2) {
-            word += " million"
+            if (!wordOnly) word += " ";
+            word += "million"
             divisions -= 2;
         } else if (divisions == 3) {
-            word += " billion"
+            if (!wordOnly) word += " ";
+            word += "billion"
             divisions -= 3;
         } else if (divisions == 4) {
-            word += " trillion"
+            if (!wordOnly) word += " ";
+            word += "trillion"
             divisions -= 4;
         } else if (divisions == 5) {
-            word += " quadrillion"
+            if (!wordOnly) word += " ";
+            word += "quadrillion"
             divisions -= 5;
         } else if (divisions == 6) {
-            word += " quintillion"
+            if (!wordOnly) word += " ";
+            word += "quintillion"
             divisions -= 6;
         } else if (divisions == 7) {
-            word += " sextillion"
+            if (!wordOnly) word += " ";
+            word += "sextillion"
             divisions -= 7;
         } else if (divisions == 8) {
-            word += " septillion"
+            if (!wordOnly) word += " ";
+            word += "septillion"
             divisions -= 8;
         } else if (divisions == 9) {
-            word += " octillion"
+            if (!wordOnly) word += " ";
+            word += "octillion"
             divisions -= 9;
         } else if (divisions >= 10) {
-            word += " decillion"
+            if (!wordOnly) word += " ";
+            word += "nonillion"
             divisions -= 10;
+        } else if (divisions >= 11) {
+            if (!wordOnly) word += " ";
+            word += "decillion"
+            divisions -= 11;
         }
     }
 

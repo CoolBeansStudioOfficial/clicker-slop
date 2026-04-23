@@ -72,22 +72,27 @@ function setBackground(number) {
 
 export function setCookies(count) {
     clearCookies();
+
     var cookieScale = 1;
 
     var lengthFound = false;
     while (!lengthFound) {
-        if (count - (cookieScale * 100) < 1) {
+        if (count - (cookieScale * 1000) < 1) {
             lengthFound = true;
         }
-        else { cookieScale *= 100 }
+        else { cookieScale *= 1000 }
     }
 
     for (var i = 0; i < count / cookieScale; i++) {
         var img = document.createElement("img");
-        if (count < 1000000000000000000000000) img.className = `fakecookie-${cookieScale} fakecookie`;
-        else img.className = "fakecookie-infinity fakecookie";
+
+        var word = numberToWord(count, true);
+        console.log(word);
+        if (word == "") img.className = `fakecookie-one fakecookie`;
+        else img.className = `fakecookie-${word} fakecookie`;
+
         img.src = "cookie.png";
-        img.title = `${cookieScale} cookies`;
+        img.title = `${numberToWord(cookieScale)} cookies`;
         cookiesDiv.appendChild(img);
     }
 }
