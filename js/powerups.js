@@ -2,7 +2,20 @@ import { playSound } from "./audio.js";
 import { clickCookie, numberToWord, cookies, spendCookies, multiplier } from "./game.js";
 import { updateUI } from "./ui.js";
 
+//reset all
 
+export function resetPowerups() {
+    autoclickOn = false;
+    autoclickCost = 500;
+    clickDelay = 500;
+
+    crumbsCost = 5001;
+    crumbsOn = false;
+    crumbsDelay = 5000;
+    crumb.hidden = true;
+
+    updateUI();
+}
 
 //autoclick
 
@@ -23,16 +36,16 @@ autoclickButton.addEventListener("click", function() {
         else clickDelay /= 2;
 
         autoclickCost *= 10;
-        
-        autoclickButton.innerText = `Upgrade autoclick:\n${numberToWord(autoclickCost)}`;
 
         updateUI();
     }
 });
 
 function autoClick() {
-    if (autoclickOn) clickCookie(false);
-    setTimeout(autoClick, clickDelay);
+    if (autoclickOn) {
+        clickCookie(false);
+        setTimeout(autoClick, clickDelay);
+    }
 }
 
 //crumbs
@@ -55,8 +68,6 @@ crumbsButton.addEventListener("click", function() {
         else crumbsDelay /= 2;
             
         crumbsCost *= 1000;
-        
-        crumbsButton.innerText = `Upgrade crumbs:\n${numberToWord(crumbsCost)}`;
 
         updateUI();
     }
@@ -65,17 +76,22 @@ crumbsButton.addEventListener("click", function() {
 let position = "left";
 
 function spawnCrumb() {
+    if (!crumbsOn) {
+        hidden = true;
+        return;
+    }
+
     if (position == "left") position = "right";
     else position = "left";
-    crumb.style = `top: ${Math.random() * 250}px; ${position}: ${clamp(Math.random() * 500, 250, 500)}px;`
+    crumb.style = `top: ${Math.random() * 250}px; ${position}: ${clamp(Math.random() * 500, 250, 500)}px;`;
     crumb.hidden = false;
-    crumb.innerHTML = `${numberToWord(multiplier * 1000)} cookies`
+    crumb.innerHTML = `${numberToWord(multiplier * 1000)} cookies`;
 }
 
 crumb.addEventListener("click", function () {
     playSound("audio/crumb.wav");
     spendCookies(-multiplier * 1000, true);
-    setTimeout(spawnCrumb, crumbsDelay);
+    if (crumbsOn) setTimeout(spawnCrumb, crumbsDelay);
     crumb.hidden = true;
 
     updateUI();

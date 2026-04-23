@@ -1,5 +1,6 @@
 import { playSound } from "./audio.js";
 import { updateRebirth, updateUI } from "./ui.js";
+import { resetPowerups } from "./powerups.js";
 
 let counter = document.getElementById("counter");
 let multiplierDisplay = document.getElementById("multiplier");
@@ -83,11 +84,12 @@ function startRebirth() {
     costMultiplier = 1;
 
     rebirth++;
-    rebirthCost *= 10000000;
+    rebirthCost *= 1000000;
     rebirthDisplay.innerText = `Rebirth ${rebirth}`;
     rebirthDisplay.hidden = false;
     rebirthButton.hidden = true;
 
+    resetPowerups();
     updateRebirth();
 }
 

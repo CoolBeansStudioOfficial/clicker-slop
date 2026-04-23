@@ -27,9 +27,11 @@ export function updateUI() {
 
     if (cookies >= autoclickCost) setButtonState(autoclickButton, true);
     else setButtonState(autoclickButton);
+    autoclickButton.innerText = `Upgrade autoclick:\n${numberToWord(autoclickCost)}`;
 
     if (cookies >= crumbsCost) setButtonState(crumbsButton, true);
     else setButtonState(crumbsButton);
+    crumbsButton.innerText = `Upgrade crumbs:\n${numberToWord(crumbsCost)}`;
 }
 
 let rebirthDisplay = document.getElementById("rebirthDisplay");
@@ -50,23 +52,25 @@ export function setButtonState(button, active = false) {
 }
 
 function setBackground(number) {
-    if (number == 1) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 2) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(94, 171, 153, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 3) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 4) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else if (number == 5) {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 50%, rgba(200, 213, 218, 1) 100%);"
-    }
-    else {
-        html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 50%, rgba(200, 213, 218, 1) 100%);"
+    switch (number) {
+        case 1:
+            html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(155, 165, 168, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
+        case 2:
+            html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(94, 171, 153, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
+        case 3:
+            html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 188, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
+        case 4:
+            html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(194, 117, 79, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
+        case 5:
+            html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
+        default:
+            html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
     }
 }
 
@@ -87,7 +91,6 @@ export function setCookies(count) {
         var img = document.createElement("img");
 
         var word = numberToWord(count, true);
-        console.log(word);
         if (word == "") img.className = `fakecookie-one fakecookie`;
         else img.className = `fakecookie-${word} fakecookie`;
 
