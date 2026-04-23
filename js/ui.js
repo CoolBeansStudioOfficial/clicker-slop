@@ -1,5 +1,5 @@
 import { numberToWord, cookies, multiplier, multCost, rebirth, rebirthCost } from "./game.js";
-import { autoclickCost, crumbsCost } from "./powerups.js";
+import { autoclickCost, crumbsCost, clamp } from "./powerups.js";
 
 let html = document.getElementById("html");
 let counter = document.getElementById("counter");
@@ -68,8 +68,14 @@ function setBackground(number) {
         case 5:
             html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(79, 194, 186, 1) 50%, rgba(200, 213, 218, 1) 100%);";
             break;
-        default:
+        case 6:
             html.style = "background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(163, 79, 194, 1) 50%, rgba(200, 213, 218, 1) 100%);";
+            break;
+        default:
+            var r = (Math.random() * 255).toFixed(0);
+            var g = (Math.random() * 255).toFixed(0);
+            var b = (Math.random() * 255).toFixed(0);
+            html.style = `background: linear-gradient(180deg,rgba(200, 213, 218, 1) 0%, rgba(${r}, ${g}, ${b}, 1) 50%, rgba(200, 213, 218, 1) 100%);`;
             break;
     }
 }

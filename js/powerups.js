@@ -97,6 +97,6 @@ crumb.addEventListener("click", function () {
     updateUI();
 });
 
-function clamp(number, minimum, maximum) {
+export function clamp(number, minimum, maximum) {
 	return Math.min(Math.max(number, minimum), maximum);
 }
