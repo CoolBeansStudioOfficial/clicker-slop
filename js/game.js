@@ -146,7 +146,7 @@ export function numberToWord(number, wordOnly = false) {
             if (!wordOnly) word += " ";
             word += "octillion"
             divisions -= 9;
-        } else if (divisions >= 10) {
+        } else if (divisions == 10) {
             if (!wordOnly) word += " ";
             word += "nonillion"
             divisions -= 10;
